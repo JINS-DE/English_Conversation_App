@@ -37,9 +37,23 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
+    'member',
+    'chat',
+    'rest_framework',
+    'corsheaders',
 ]
+# 추가
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',     # 추가
+    'django.middleware.common.CommonMiddleware', # 추가
+
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -48,6 +62,12 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+#이하 추가
+CORS_ORIGIN_WHITELIST = [
+    'https://localhost:3000',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = "English_conversation_app.urls"
 
