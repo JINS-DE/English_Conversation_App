@@ -1,28 +1,32 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Signup{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block extrahead %}
 <style>
     #image_preview {
         max-width: 200px; /* 이미지 크기 제한 */
         height: auto;
-        display: none; /* 초기에는 이미지 보이지 않게 설정 */
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="signup-container">
-    <h1>Sign Up</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <!-- profile_img 필드에 대해 개별적으로 수정할 필요가 있으면 여기서 조정 -->
-        <img id="image_preview" alt="Your image will appear here.">
-        <button type="submit">Sign up</button>
-    </form>
-</div>
+<h1>Profile</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if user.profile_img %}
+    <img src="{{ user.profile_img.url }}" id="image_preview" alt="Your image will appear here.">
+{% else %}
+    {% load static %}
+    <img src="{% static 'image/default-profile.png' %}" id="image_preview" alt="Default Profile">
+{% endif %}
+    
+    {{ form.as_p }}
+
+    <button type="submit">Update</button>
+
+</form>
 {% endblock %}
 
 {% block extrajs %}
@@ -33,7 +37,6 @@
         reader.onload = function() {
             var output = document.getElementById('image_preview');
             output.src = reader.result;
-            output.style.display = 'block'; // 이미지를 보이게 합니다
         };
         reader.readAsDataURL(event.target.files[0]);
     };

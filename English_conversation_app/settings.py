@@ -147,7 +147,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'users.User' # default는 auth.User인데 이걸 씀으로 덮어씀
+AUTH_USER_MODEL = 'users.Users' # default는 auth.User인데 이걸 씀으로 덮어씀
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
