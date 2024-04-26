@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Chat Room{% endblock %}
+
+{% block extrahead %}
+<style>
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        overflow: auto;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .message-input {
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Chat with ChatGPT</h2>
+    <div id="chat-container" class="chat-container">
+        <!-- Messages will be displayed here -->
+    </div>
+    <input type="text" id="message-input" class="form-control message-input" placeholder="Type a message...">
+    <button id="send-button" class="btn btn-primary mt-2">Send</button>
+</div>
+
+<script src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

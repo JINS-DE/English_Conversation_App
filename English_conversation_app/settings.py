@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'chat',
     'rest_framework',
     'corsheaders',
+    'channels',
 ]
+#추가
+ASGI_APPLICATION = 'English_conversation_app.asgi.application'
 # 추가
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -151,3 +154,12 @@ AUTH_USER_MODEL = 'users.Users' # default는 auth.User인데 이걸 씀으로 �
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
