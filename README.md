@@ -1,3 +1,6 @@
+# 예상 완성 아키텍처 
+* ![image](https://user-images.githubusercontent.com/68724828/186079270-28793ba1-466e-421f-baf2-563b890c926f.png)
+
 # chat 기능 초기 
 * ![image](https://github.com/JINS-DE/English_Conversation_App/assets/115610267/c47caab0-613c-4b62-ac88-50ef93bb4acc)
 
